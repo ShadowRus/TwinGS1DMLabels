@@ -29,12 +29,23 @@ class PrinterService(Base):
     is_online = Column(Integer)
     is_deleted = Column(Integer)
 
+class DeviceService(Base):
+    __tablename__="Device"
+    id = Column(Integer, primary_key=True, index=True)
+    device_name = Column(String)
+    url = Column(String)
+    is_deleted = Column(Integer)
+
 class PrinterRespone(BaseModel):
     name: str=Field()
     url: str=Field()
     port:int= Field(default=9100)
     type:int=Field(default=1)
     is_default: int=Field(default = 0)
+
+class DeviceRespone(BaseModel):
+    name: str=Field()
+    url: str=Field()
 
 class PrinterTask(BaseModel):
     goods_id:int= Field()

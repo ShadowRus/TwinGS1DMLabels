@@ -31,6 +31,14 @@ if st.session_state['action'] == 'Удаление':
         else:
             st.error('Что-то пошло не так. Повторите операцию позже')
 
+    st.markdown('### Устройтсова', unsafe_allow_html=True)
+    if st.button('Очистить БД Устройств'):
+        re = requests.get(str(SERVER_URL + '/clear_db/devices'))
+        if re.status_code == 200:
+            st.success('База Устройств успешно очищена')
+        else:
+            st.error('Что-то пошло не так. Повторите операцию позже')
+
 if st.session_state['action'] == 'Просмотр':
     st.markdown('### Принтеры',unsafe_allow_html=True)
 
@@ -43,6 +51,21 @@ if st.session_state['action'] == 'Просмотр':
         df = df[['print_name', 'url', 'port']]
         df = df.rename(columns={
             'print_name': 'Принтер',
+            'url': 'IP4'
+        })
+        st.data_editor(df)
+
+    st.markdown('### Устройства', unsafe_allow_html=True)
+
+    re = requests.get(str(SERVER_URL + '/devices'))
+
+    j1 = re.json()
+    if len(j1) != 0:
+        df = pd.DataFrame.from_records(j1)
+        df.set_index('id', inplace=True)
+        df = df[['device_name', 'url']]
+        df = df.rename(columns={
+            'device_name': 'Устройство',
             'url': 'IP4'
         })
         st.data_editor(df)
@@ -91,10 +114,25 @@ if st.session_state['action'] == 'Загрузка':
         if st.button('Добавить принтер'):
             re1 = requests.post(str(SERVER_URL + '/printer'),data=json.dumps(data),headers={"accept": "application/json"})
             if re1.status_code == 200:
-                st.success("Шаблон успешно загружен.")
+                st.success("Принтер успешно добавлен.")
                 st.rerun()
             else:
-                st.error(f"Ошибка при загрузке шаблона: {re1.status_code}")
+                st.error(f"Ошибка при добавление принтера: {re1.status_code}")
+
+    if st.checkbox('Добавить устройства', value=False,help='При добавление устройств доступ будет осуществлен только для добавленных устройств'):
+        st.text_input('Наименование устройства',key = 'device_name')
+        st.text_input('Ip4 устроqства',key = 'url_device')
+
+        data = {"name": st.session_state['device_name'],
+                "url": st.session_state['url_device'],
+                }
+        if st.button('Добавить устройство'):
+            re1 = requests.post(str(SERVER_URL + '/device'),data=json.dumps(data),headers={"accept": "application/json"})
+            if re1.status_code == 200:
+                st.success("Устройство успешно добавлено.")
+                st.rerun()
+            else:
+                st.error(f"Ошибка при добавление устройства: {re1.status_code}")
 
 
 
