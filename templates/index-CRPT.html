@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Регистрация участников</title>
+    <link href="{{ url_for('static', path='/css/style.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <img src="/static/assets/images/logo-A.png" alt="Company Logo" class="logo" id="logo_a">
+    <h1>Дубликатор КМ</h1>
+    <img src="/static/assets/images/logo_CRPT.png" alt="Company Logo" class="logo" id="logo_crpt">
+    <div id="container">
+      <p id="scanText">Сканируйте <span class="highlight">КОД МАРКИРОВКИ</span> товара</p>
+      <p id="barcode">...</p>
+
+    </div>
+    <script src="{{ url_for('static', path='/js/script-CRPT.js') }}"></script>
+  </body>
+</html>

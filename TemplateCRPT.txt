@@ -1,0 +1,24 @@
+^XA~TA000~JSN^LT0^MNM^MTD^PON^PMN^LH0,0^JMA^PR5,5~SD10^JUS^LRN^CI0^XZ
+^XA
+^MMT
+^PW464
+^LL0320
+^LS40
+^BY200,200^FT132,260^BXN,5,200,0,0,1,~
+^FH\^FD\7E1DATA\00\00\00^FS
+^PQ1,0,1,Y^XZ
+
+
+^XA^MMT^PW464^LL0320^LS40^BY200,200^FT132,260^BXN,5,200,0,0,1,~^FH\^FD\7E1DATA\00\00\00^FS^PQ1,0,1,Y^XZ
+Для загрузки в сервис:
+
+{
+  "name": "CRPT",
+  "label": "^XA^MMT^PW464^LL0320^LS40^BY200,200^FT132,260^BXN,5,200,0,0,1,^FH\\^FD\\7E1GS1_DM_CRPT\\00\\00\\00^FS^PQ1,0,1,Y^XZ",
+  "is_default": 1
+}
+
+Настройки на ТСД:
+1  Браузер - Формат штрихкода base 64
+2  BarcodeService - GS1 DataMatrix FNC - выкл
+3 BarcodeService - Заменять GS (0x1D) на @

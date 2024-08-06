@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Регистрация участников</title>
+    <link href="{{ url_for('static', path='/css/style.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <img src="/static/assets/images/logo-A.png" alt="Company Logo" class="logo" id="logo_a">
+    <h1>Дубликатор КМ</h1>
+    <img src="/static/assets/images/logo_CRPT.png" alt="Company Logo" class="logo" id="logo_crpt">
+    <div id="container">
+      <input id="input" type="text" placeholder="Введите название, атрибут или штрихкод товара" />
+      <button id="searchButton">Поиск</button>
+      <p id="scanText">Сканируйте штрихкод товара</p>
+      <p id="barcode">...</p>
+
+      <ul id="list"></ul>
+      <button id="backButton">Назад</button>
+      <button id="printButton">Печать</button>
+      <!--
+      <button id="registerButton">Добавить новый товар</button>
+
+      <form id="form">
+        <label for="surname">Фамилия</label>
+        <input id="surname" type="text" name="surname" />
+        <label for="name">Имя</label>
+        <input id="name" type="text" name="name" />
+        <label for="organization">Организация</label>
+        <input id="organization" type="text" name="organization" />
+        <label for="position">Город участника</label>
+        <input id="position" type="text" name="position" />
+      </form>
+      <button id="submitButton">Зарегистрировать</button>
+      -->
+    </div>
+    <script src="{{ url_for('static', path='/js/script-CRPT.js') }}"></script>
+  </body>
+</html>

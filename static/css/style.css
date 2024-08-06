@@ -1,0 +1,40 @@
+/* Добавляем стиль для файла html */
+
+<style>
+
+
+  /* Определяем общий стиль для кнопок и полей ввода */
+  #list, #printButton, #backButton, #form, #submitButton, #errorCode, #retryButton {
+  display: none;
+    }
+
+  h1 {
+            text-align: center; /* выравнивание заголовка по центру */
+            margin-top: 20px;   /* отступ перед заголовком */
+        }
+  .highlight {
+            font-weight: bold;
+            color: red;
+        }
+
+
+
+  button, input {
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  /* Добавляем медиа-запрос для устройств с шириной экрана от 320px до 480px */
+  @media screen and (min-width: 320px) and (max-width: 780px) {
+    /* Устанавливаем ширину кнопок и полей ввода на 100% */
+    button, input {
+      width: 90%;
+    }
+
+    /* Увеличиваем высоту кнопок и полей ввода на 20px */
+    button, input {
+      height: 12vh;
+    }
+  }
+</style>
